@@ -458,30 +458,37 @@
   /* ── ABOUT COLLAGE ── */
   .about-collage {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
-    gap: 0.75rem;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-rows: auto auto auto;
+    gap: 0.6rem;
     margin-bottom: 2.5rem;
   }
   .about-photo {
     border-radius: var(--radius); overflow: hidden;
-    aspect-ratio: 1;
-  }
-  .about-photo.tall {
-    grid-row: span 2;
-    aspect-ratio: auto;
   }
   .about-photo img {
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
+  /* Large center photo spanning 2 rows */
+  .about-photo.center-big {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+  /* Bottom wide photo spanning 2 columns */
+  .about-photo.bottom-wide {
+    grid-column: 1 / 3;
+  }
   @media (max-width: 768px) {
     .about-collage {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
     }
-    .about-photo.tall {
-      grid-column: span 2;
-      grid-row: span 1;
-      aspect-ratio: 16/9;
+    .about-photo.center-big {
+      grid-column: 1 / 3;
+      grid-row: auto;
+    }
+    .about-photo.bottom-wide {
+      grid-column: 1 / 3;
     }
   }
 
@@ -517,19 +524,6 @@
 <body>
 
 
-<!-- ═══════ NAVIGATION (minimal top bar) ═══════ -->
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="#top">Dak Brown</a>
-    <div class="nav-links">
-      <a href="#resume">Resume</a>
-      <a href="#brag-book">Highlights</a>
-      <a href="#references">References</a>
-      <a href="#about">About Me</a>
-    </div>
-  </div>
-</nav>
-
 <!-- ═══════ HOME ═══════ -->
 <div class="page" id="top">
   <div class="hero-banner">
@@ -548,7 +542,7 @@
         <div class="hero-cta">
           <a class="btn btn-primary" href="#resume">View Resume →</a>
           <a class="btn btn-outline" href="#references">References</a>
-          <a class="btn btn-outline" href="#brag-book">See My Highlights</a>
+          <a class="btn btn-outline" href="#brag-navy">See My Highlights</a>
           <a class="btn btn-outline" href="mailto:dakbrwn@gmail.com">Contact Me</a>
         </div>
 
@@ -848,26 +842,13 @@
 <hr style="border:none; border-top:1px solid var(--border); margin:0;">
 
 
-<!-- ═══════ BRAG BOOK ═══════ -->
-<div class="page" id="brag-book">
-  <div class="container">
-    
-    <div class="section-header">
-      <div class="section-divider"></div>
-      <h2>Highlights</h2>
-      <p>From the Navy to the sales floor — highlights from both chapters.</p>
-    </div>
-
-    
-</div>
-
-<!-- ═══════ BRAG BOOK: NAVY ═══════ -->
+<!-- ═══════ NAVY HIGHLIGHTS ═══════ -->
 <div class="page" id="brag-navy">
   <div class="container">
     
     <div class="section-header">
       <div class="section-divider"></div>
-      <h2>⚓ Navy</h2>
+      <h2>⚓ Navy Highlights</h2>
       <p style="white-space:nowrap;">6 years of submarine service — from Naval Nuclear Power School to the USS New Hampshire, "Live Free or Die," SSN 778.</p>
     </div>
 
@@ -984,13 +965,13 @@
     </div>
   </div>
 
-<!-- ═══════ BRAG BOOK: SALES ═══════ -->
+<!-- ═══════ GTM HIGHLIGHTS ═══════ -->
 <div class="page" id="brag-sales">
   <div class="container">
     
     <div class="section-header">
       <div class="section-divider"></div>
-      <h2>💼 GTM Leader</h2>
+      <h2>💼 GTM Highlights</h2>
     </div>
 
     <div class="projects-grid">
@@ -1082,11 +1063,11 @@
 
     <div class="about-collage">
       <div class="about-photo"><img src="images/about_family.jpg" alt="Family"></div>
-      <div class="about-photo"><img src="images/about_taylor.jpg" alt="Taylor and me"></div>
-      <div class="about-photo tall"><img src="images/about_mttam.png" alt="Mt. Tam summit"></div>
+      <div class="about-photo center-big"><img src="images/about_taylor.jpg" alt="Taylor and me"></div>
+      <div class="about-photo"><img src="images/about_mttam.png" alt="Mt. Tam summit"></div>
       <div class="about-photo"><img src="images/about_friends.jpg" alt="Birthday with friends"></div>
       <div class="about-photo"><img src="images/about_cooking.jpg" alt="Home cooking"></div>
-      <div class="about-photo"><img src="images/about_biking.jpg" alt="Cycling in Marin"></div>
+      <div class="about-photo bottom-wide"><img src="images/about_biking.jpg" alt="Cycling in Marin"></div>
       <div class="about-photo"><img src="images/about_wakeboard.png" alt="Wakeboarding"></div>
     </div>
 
