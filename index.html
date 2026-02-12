@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dak Brown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #FAFAF8;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6B6B6B;
+    --text-muted: #9A9A9A;
+    --accent: #2C5F2D;
+    --accent-light: #E8F0E8;
+    --border: #E8E6E3;
+    --border-light: #F0EEEB;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+    --shadow-hover: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.05);
+    --radius: 10px;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0.75rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.15rem;
+    color: var(--text-primary); cursor: pointer;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 0.25rem;
+  }
+  .nav-links a {
+    text-decoration: none; color: var(--text-secondary);
+    font-size: 0.825rem; font-weight: 500;
+    padding: 0.4rem 0.85rem; border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--accent); background: var(--accent-light);
+  }
+
+  /* ── PAGE NAV (below hero CTA) ── */
+  .page-nav {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 2rem; padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .page-nav a {
+    text-decoration: none; color: var(--text-secondary);
+    font-size: 0.875rem; font-weight: 500;
+    padding: 0.5rem 1rem; border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .page-nav a:hover {
+    color: var(--accent); border-color: var(--accent);
+    background: var(--accent-light); transform: translateY(-1px);
+  }
+
+  /* No mobile toggle needed */
+
+  /* ── HERO BANNER ── */
+  .hero-banner {
+    width: 100%; overflow: hidden;
+    position: relative; background: #d8dfe6;
+  }
+  .hero-banner img {
+    width: 100%; height: auto; display: block;
+  }
+  .hero-banner-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+    background: linear-gradient(to top, var(--bg), transparent);
+  }
+
+  /* ── PAGES ── */
+  .page { padding-top: 0; scroll-margin-top: 60px; }
+  
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+
+  /* ── HERO (HOME) ── */
+  .hero {
+    display: grid; grid-template-columns: 1fr 340px; gap: 4rem;
+    align-items: center; min-height: auto;
+    padding: 3rem 0;
+  }
+  .hero-text h1 {
+    font-family: var(--serif); font-size: 3.25rem;
+    line-height: 1.15; letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  .hero-text h1 span { color: var(--accent); }
+  .hero-text .tagline {
+    font-size: 1.125rem; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.7; max-width: 520px;
+    margin-bottom: 2rem;
+  }
+  .hero-cta {
+    display: inline-flex; gap: 0.75rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem; border-radius: 8px;
+    font-family: var(--sans); font-size: 0.875rem; font-weight: 500;
+    text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+  }
+  .btn-primary:hover { background: #234D24; transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+  .btn-outline {
+    background: transparent; color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--text-secondary); transform: translateY(-1px); }
+
+  .hero-photo {
+    width: 340px; height: 400px;
+    border-radius: var(--radius); overflow: hidden;
+    background: var(--border-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 0.85rem;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .hero-photo .placeholder-icon {
+    text-align: center;
+  }
+  .hero-photo .placeholder-icon svg { margin-bottom: 0.5rem; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  .section-header h2 {
+    font-family: var(--serif); font-size: 2rem;
+    letter-spacing: -0.01em; margin-bottom: 0.5rem;
+  }
+  .section-header p {
+    color: var(--text-secondary); font-size: 1rem; font-weight: 300;
+    max-width: 560px;
+  }
+  .section-divider {
+    width: 40px; height: 3px; background: var(--accent);
+    border-radius: 2px; margin-bottom: 1rem;
+  }
+
+  /* ── RESUME ── */
+  .resume-download {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem; box-shadow: var(--shadow);
+  }
+  .resume-download span { font-weight: 500; }
+  .resume-download small { color: var(--text-muted); margin-left: 0.5rem; }
+
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px;
+    width: 1px; background: var(--border);
+  }
+  .timeline-item { margin-bottom: 2.5rem; position: relative; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -2rem; top: 8px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .timeline-item h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.15rem; }
+  .timeline-item .company { color: var(--accent); font-weight: 500; font-size: 0.95rem; }
+  .timeline-item .dates { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem; }
+  .timeline-item p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65; }
+
+  .resume-bullets {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .resume-bullets li {
+    color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65;
+    padding-left: 1rem; position: relative; margin-bottom: 0.35rem;
+  }
+  .resume-bullets li::before {
+    content: ''; position: absolute; left: 0; top: 0.55em;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .resume-bullets li strong { color: var(--text-primary); }
+
+  .qual-grid {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem;
+  }
+  .qual-badge {
+    display: inline-block; padding: 0.35rem 0.75rem;
+    background: #E8EAF6; color: #283593;
+    font-size: 0.8rem; font-weight: 500;
+    border-radius: 5px;
+  }
+
+  .medal-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;
+  }
+  .medal-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.6rem 0.85rem;
+    font-size: 0.875rem; color: var(--text-primary);
+  }
+  .medal-icon { font-size: 1.25rem; flex-shrink: 0; }
+  @media (max-width: 768px) {
+    .nav-links { gap: 0; }
+    .nav-links a { font-size: 0.75rem; padding: 0.4rem 0.55rem; }
+    .nav-inner { padding: 0.75rem 1.25rem; }
+    .medal-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── REFERENCES ── */
+  .references-grid {
+    display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+    max-width: 720px;
+  }
+  .reference-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.75rem;
+    box-shadow: var(--shadow); transition: all 0.25s;
+    display: flex; flex-direction: column; gap: 1rem;
+    cursor: pointer;
+  }
+  .reference-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+  .reference-quote {
+    color: var(--text-secondary); font-size: 0.95rem;
+    line-height: 1.65; font-style: italic;
+    padding-left: 1rem; border-left: 3px solid var(--accent-light);
+  }
+  .reference-preview {
+    color: var(--text-secondary); font-size: 0.925rem;
+    line-height: 1.65; font-style: italic;
+    padding-left: 1rem; border-left: 3px solid var(--accent-light);
+  }
+  .reference-expand-hint {
+    font-size: 0.8rem; color: var(--accent); font-weight: 500;
+    transition: all 0.2s;
+  }
+  .reference-card:hover .reference-expand-hint { color: #234D24; }
+  .reference-full {
+    display: none; padding-top: 0.75rem;
+    border-top: 1px solid var(--border-light);
+  }
+  .reference-full p {
+    color: var(--text-secondary); font-size: 0.9rem;
+    line-height: 1.7; margin-bottom: 0.75rem;
+  }
+  .reference-full p:last-child { margin-bottom: 0; }
+  .reference-card.expanded .reference-full { display: block; }
+  .reference-card.expanded .reference-preview { display: none; }
+  .reference-card.expanded .reference-expand-hint { display: none; }
+  .reference-card.expanded { transform: none; box-shadow: var(--shadow-hover); }
+  .reference-person {
+    display: flex; align-items: center; gap: 0.85rem;
+  }
+  .reference-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--accent-light); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 600; flex-shrink: 0;
+  }
+  .reference-avatar-img {
+    width: 52px; height: 52px; border-radius: 50%;
+    overflow: hidden; flex-shrink: 0; position: relative;
+  }
+  .reference-avatar-img img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .reference-avatar-fallback {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--accent-light); color: var(--accent);
+    display: none; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 600;
+  }
+  .reference-name { font-weight: 600; font-size: 0.95rem; }
+  .reference-title { color: var(--text-secondary); font-size: 0.825rem; }
+  .reference-contact { color: var(--accent); font-size: 0.8rem; margin-top: 0.1rem; }
+  .reference-relationship {
+    display: inline-block; align-self: flex-start;
+    padding: 0.2rem 0.65rem; border-radius: 4px;
+    background: var(--border-light); color: var(--text-muted);
+    font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow); transition: all 0.25s;
+  }
+  .project-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+  .project-thumb {
+    height: 180px; background: var(--border-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+  }
+  .project-thumb-link {
+    text-decoration: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .project-thumb-link:hover {
+    background: var(--accent-light);
+  }
+  .project-info { padding: 1.25rem 1.5rem; }
+  .project-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .project-info p { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; }
+  .project-tag {
+    display: inline-block; margin-top: 0.75rem;
+    padding: 0.25rem 0.65rem; border-radius: 4px;
+    background: var(--accent-light); color: var(--accent);
+    font-size: 0.75rem; font-weight: 500;
+  }
+
+  /* ── DEALS ── */
+  .deals-table-wrap {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead { background: var(--bg); }
+  th {
+    text-align: left; padding: 0.85rem 1.25rem;
+    font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 1rem 1.25rem; font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(44,95,45,0.02); }
+  .deal-value { font-weight: 600; color: var(--accent); }
+  .deal-status {
+    display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px;
+    font-size: 0.75rem; font-weight: 500;
+  }
+  .status-closed { background: var(--accent-light); color: var(--accent); }
+  .status-enterprise { background: #FFF3E0; color: #E65100; }
+
+  /* ── OUTBOUND / ACCOLADES ── */
+  .outbound-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+  }
+  .outbound-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow); transition: all 0.25s;
+  }
+  .outbound-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+  .outbound-img {
+    height: 220px; background: var(--border-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .outbound-caption { padding: 1rem 1.25rem; }
+  .outbound-caption h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .outbound-caption p { color: var(--text-secondary); font-size: 0.85rem; }
+  .badge {
+    display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px;
+    font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.04em; margin-bottom: 0.5rem;
+  }
+  .badge-outbound { background: #E3F2FD; color: #1565C0; }
+  .badge-accolade { background: #FFF8E1; color: #F9A825; }
+  .badge-navy { background: #E8EAF6; color: #283593; }
+
+  .brag-section-title {
+    font-family: var(--serif); font-size: 1.35rem;
+    margin-bottom: 1.25rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── BRAG NAV CARDS ── */
+  .brag-nav {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+  }
+  .brag-nav-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2.5rem 2rem;
+    box-shadow: var(--shadow); cursor: pointer;
+    transition: all 0.25s; text-align: center;
+  }
+  .brag-nav-card:hover {
+    box-shadow: var(--shadow-hover); transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .brag-nav-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .brag-nav-card h3 {
+    font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.5rem;
+  }
+  .brag-nav-card p {
+    color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;
+    max-width: 280px; margin: 0 auto 1rem;
+  }
+  .brag-nav-arrow {
+    color: var(--accent); font-weight: 600; font-size: 0.9rem;
+  }
+
+  /* ── PHOTOS ── */
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .photo-card {
+    border-radius: var(--radius); overflow: hidden;
+    background: var(--border-light); aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 0.85rem;
+    border: 1px solid var(--border);
+    transition: all 0.25s; cursor: pointer;
+  }
+  .photo-card:hover { box-shadow: var(--shadow-hover); transform: scale(1.02); }
+  .photo-card.tall { grid-row: span 2; aspect-ratio: auto; }
+  .photo-card img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  /* ── ABOUT COLLAGE ── */
+  .about-collage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .about-photo {
+    border-radius: var(--radius); overflow: hidden;
+    aspect-ratio: 1;
+  }
+  .about-photo.tall {
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+  .about-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  @media (max-width: 768px) {
+    .about-collage {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .about-photo.tall {
+      grid-column: span 2;
+      grid-row: span 1;
+      aspect-ratio: 16/9;
+    }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem; text-align: center;
+    color: var(--text-muted); font-size: 0.8rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .nav-links { gap: 0; }
+    .nav-links a { font-size: 0.75rem; padding: 0.4rem 0.55rem; }
+    .nav-inner { padding: 0.75rem 1.25rem; }
+    .hero { grid-template-columns: 1fr; gap: 2rem; text-align: center; min-height: auto; padding: 3rem 0; }
+    .hero-text h1 { font-size: 2.25rem; }
+    .hero-text .tagline { margin: 0 auto 2rem; }
+    .hero-cta { justify-content: center; }
+    .page-nav { justify-content: center; }
+    .hero-photo { width: 100%; max-width: 300px; height: 340px; margin: 0 auto; order: -1; }
+    .projects-grid, .outbound-grid, .references-grid, .brag-nav { grid-template-columns: 1fr; }
+    .photos-grid { grid-template-columns: repeat(2, 1fr); }
+    .photo-card.tall { grid-row: span 1; aspect-ratio: 1; }
+    .deals-table-wrap { overflow-x: auto; }
+    table { min-width: 600px; }
+    .container { padding: 2rem 1.25rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+
+<!-- ═══════ NAVIGATION (minimal top bar) ═══════ -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">Dak Brown</a>
+    <div class="nav-links">
+      <a href="#resume">Resume</a>
+      <a href="#brag-book">Highlights</a>
+      <a href="#references">References</a>
+      <a href="#about">About Me</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ HOME ═══════ -->
+<div class="page" id="top">
+  <div class="hero-banner">
+    <img src="images/image_1.jpg" alt="USS New Hampshire (SSN 778) — ICEX">
+    <div class="hero-banner-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Hi, I'm <span>Dak Brown</span>.</h1>
+        <p class="tagline">
+          Navy veteran turned Founding GTM Leader. I've taken startups from $0 to $1M+ in ARR, 
+          closed enterprise logos like PwC and Janus Henderson, and built entire revenue engines — sales, marketing, product feedback, and customer activation — from scratch. 
+          Currently based in San Francisco.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#resume">View Resume →</a>
+          <a class="btn btn-outline" href="#references">References</a>
+          <a class="btn btn-outline" href="#brag-book">See My Highlights</a>
+          <a class="btn btn-outline" href="mailto:dakbrwn@gmail.com">Contact Me</a>
+        </div>
+
+        </div>
+      <div class="hero-photo" style="background:none; border:none;">
+        <img src="images/image_2.jpg" alt="Dak Brown" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius);">
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr style="border:none; border-top:1px solid var(--border); margin:0;">
+
+
+<!-- ═══════ RESUME ═══════ -->
+<div class="page" id="resume">
+  <div class="container">
+    
+    <div class="section-header">
+      <div class="section-divider"></div>
+      <h2>Resume</h2>
+      <p>From Naval Nuclear Reactor Operator to Founding GTM Leader.</p>
+    </div>
+
+    <div class="resume-download">
+      <div>
+        <span>Download Full Resume</span>
+        <small>— PDF format</small>
+      </div>
+      <a class="btn btn-primary" href="Dak_Brown2026.pdf" download>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+
+    <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:1.5rem;">Work Experience</h3>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <h3>Founding Enterprise GTM</h3>
+        <div class="company">Hark</div>
+        <div class="dates">Dec 2025 — Jan 2026 · San Francisco</div>
+        <p style="color:var(--text-muted); font-size:0.8rem; font-style:italic; margin-bottom:0.5rem;">Hark automates frontline operations for enterprises by enabling them to build their own AI agents that can call, send SMS, email, and operate the browser.</p>
+        <ul class="resume-bullets">
+          <li>Managed enterprise deals with Albertsons, Home Depot, Hirschbach, Medlog, Hogan, and Sage Freight.</li>
+          <li>Built a TAM map for expansion opportunities outside of Trucking & Logistics, including expert network calls, SEC filing research, and identifying entry point use cases.</li>
+          <li>Designed the outbound motion — tiering accounts, identifying lighthouse accounts and personas, and building messaging for both automation and personalization at scale.</li>
+          <li>Rebuilt CRM properties and stages to accurately match the sales cycle.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Founding GTM</h3>
+        <div class="company">Fintool</div>
+        <div class="dates">Mar 2024 — Dec 2025 · San Francisco</div>
+        <p style="color:var(--text-muted); font-size:0.8rem; font-style:italic; margin-bottom:0.5rem;">Financial copilot for institutional investors — Hedge Funds, Family Offices, Asset Managers, and Corporate Clients.</p>
+        <ul class="resume-bullets">
+          <li>Responsible for leading Marketing, Sales, and Customer Success. Managed a $33k/month budget.</li>
+          <li>Grew revenue from <strong>$0 ARR → $945k in 18 months</strong>.</li>
+          <li>Logos closed: PwC, Janus Henderson, Soma Equity, HMI Capital, SRS Fund, Nexpoint Ventures, Artisan Partners, Royce Investments, Tocqueville, Kennedy Capital, Noked Capital, Bluefin Capital Management, Lincoln Financial, and Amgen (~$1T in AUM).</li>
+          <li>Ran marketing campaigns including podcast sponsorships, monthly webinars, guest appearances, Google Ads, influencer marketing, and a guerilla marketing campaign at Berkshire Hathaway published by multiple national media outlets.</li>
+          <li>Built the CRM from the ground up — all properties, objects, views, and dashboards to monitor Sales, Marketing, and Customer Success.</li>
+          <li>Made it a 2025 goal to meet every major customer in person — hit that milestone in September.</li>
+          <li>Increased new customer adoption by 30% (over 2 months) through white-glove onboarding.</li>
+          <li>Ran a land-and-expand motion with Kennedy Capital, Tocqueville, and Semler Brossy to triple contract sizes.</li>
+          <li>Main point of contact for all customer questions, feedback, and concerns. Supported key accounts with quarterly check-ins and identified design partners for new features.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Founder</h3>
+        <div class="company">Founder Meet Sales & 4pm</div>
+        <div class="dates">Apr 2021 — Mar 2024</div>
+        <ul class="resume-bullets">
+          <li><strong>Founder Meet Sales</strong> — a marketplace for finding and hiring freelance sales professionals.</li>
+          <li><strong>4pm</strong> — bridged the disconnect between salespeople and sales leaders with automated CRM data entry, saving AEs ~1 hr/day.</li>
+          <li>Raised $200k from angel investors and accelerators including Pioneer (founded by Daniel Gross) and Growth Factory.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Account Executive</h3>
+        <div class="company">Very Good Security</div>
+        <div class="dates">Jan 2020 — Mar 2021 · San Francisco</div>
+        <ul class="resume-bullets">
+          <li>Notable logos: QuinStreet $170k (publicly traded), Fast $80k (35-day sales cycle).</li>
+          <li>Top 3 of 12 reps with 98% yearly quota attainment.</li>
+          <li>Well versed in Challenger Sale, Jolt Selling, and MEDDPICC methodologies.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>SDR → Account Executive</h3>
+        <div class="company">TrustArc</div>
+        <div class="dates">Feb 2018 — Jan 2020 · San Francisco</div>
+        <ul class="resume-bullets">
+          <li>#1 SDR — promoted within 12 months.</li>
+          <li>138% to quota in first full quarter as a ramped AE.</li>
+          <li>Sourced and closed first 6-figure deal ($165k) with El Pollo Loco from a cold call without manager support.</li>
+          <li>Implemented Floral Friday to improve team camaraderie.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>QA Recruiting Consultant</h3>
+        <div class="company">Real Staffing</div>
+        <div class="dates">Feb 2017 — Jan 2018 · San Francisco</div>
+        <p>Full-cycle recruiter for medical device and healthcare industries.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Account Manager</h3>
+        <div class="company">PRA Group (Nasdaq: PRAA)</div>
+        <div class="dates">Aug 2014 — Feb 2017 · Sacramento, CA</div>
+        <p>Managed high-profile clients including Santander, Wells Fargo, and Exeter.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Nuclear Reactor Operator · Electronics Technician</h3>
+        <div class="company">United States Navy — USS New Hampshire (SSN 778)</div>
+        <div class="dates">Aug 2008 — Aug 2014 · Groton, CT</div>
+        <ul class="resume-bullets">
+          <li>Served 6 years on a nuclear submarine. Honorable discharge with distinguished medals.</li>
+          <li>Qualified: Nuclear Reactor Operator, Propulsion Plant Operator, Shutdown Reactor Operator, Electrical Operator, Workcenter Supervisor.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin: 2.5rem 0 1rem;">Education</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Bachelor's Equivalent — Nuclear Engineering</h3>
+        <div class="company">Naval Nuclear Power Training Command</div>
+        <div class="dates">Oct 2008 — Oct 2010 · Goose Creek, SC · GPA: 3.4</div>
+        <p>1,500+ hours of hands-on training on an operational reactor. 600+ hours focused on reactor plant systems, chemistry, reactor physics, thermodynamics, and radiological controls.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin: 2.5rem 0 1rem;">Volunteering</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Community Volunteer</h3>
+        <div class="company">Petaluma Veterans Memorial Building</div>
+        <div class="dates">Oct 2017</div>
+        <p>Volunteered at the Petaluma Veterans Memorial temporary shelter after the devastating Santa Rosa fires.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr style="border:none; border-top:1px solid var(--border); margin:0;">
+
+
+<!-- ═══════ REFERENCES ═══════ -->
+<div class="page" id="references">
+  <div class="container">
+    
+    <div class="section-header">
+      <div class="section-divider"></div>
+      <h2>References</h2>
+      <p>People I've worked with who can speak to my work and character.</p>
+    </div>
+
+    <div class="references-grid">
+
+      <div class="reference-card" onclick="this.classList.toggle('expanded')">
+        <div class="reference-person">
+          <div class="reference-avatar-img">
+            <img src="images/image_3.jpg" alt="Obaid Khan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="reference-avatar-fallback">OK</div>
+          </div>
+          <div>
+            <div class="reference-name">Obaid Khan</div>
+            <div class="reference-title">Founder, Runbook (formerly Hark) · Previous Founder of Motive (~$5B)</div>
+          </div>
+        </div>
+        <div class="reference-relationship">CEO / Direct Manager</div>
+        <div class="reference-preview">"Within his first month, he was already leading high-stakes demos and discovery calls with major enterprises, including Albertsons, Hogan, and Home Depot."</div>
+        <div class="reference-expand-hint">Click to read full reference ↓</div>
+        <div class="reference-full">
+          <p>I am writing to provide my strong recommendation for Dak Brown, who recently served as a Founding GTM Lead on my team at Runbook.</p>
+          <p>Despite his short tenure, Dak's impact was immediate. He stepped into a complex role and mastered our product with impressive speed. Within his first month, he was already leading high-stakes demos and discovery calls with major enterprises, including Albertsons, Hogan, and Home Depot. Beyond his technical aptitude, he contributed fresh, strategic perspectives that refined our product roadmap and sales cycles.</p>
+          <p>Dak's dedication is exceptional. He consistently went above and beyond, putting in significant effort to ensure our early-stage momentum stayed high. He is a high-energy "asset" who brings both domain expertise and a positive, collaborative spirit to the office.</p>
+          <p>While we ultimately moved in different directions due to misaligned long-term equity structures, I have the utmost respect for Dak's talent and work ethic. Any company looking for a driven, founding-level GTM professional would be lucky to have him and I would welcome him back anytime.</p>
+        </div>
+      </div>
+
+      <div class="reference-card" onclick="this.classList.toggle('expanded')">
+        <div class="reference-person">
+          <div class="reference-avatar-img">
+            <img src="images/image_4.jpg" alt="Nicolas Bustamante" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="reference-avatar-fallback">NB</div>
+          </div>
+          <div>
+            <div class="reference-name">Nicolas Bustamante</div>
+            <div class="reference-title">CEO & Co-Founder, Fintool · Former CEO of Doctrine</div>
+          </div>
+        </div>
+        <div class="reference-relationship">CEO / Direct Manager</div>
+        <div class="reference-preview">"What sets Dak apart is his ability to operate at both strategic and tactical levels simultaneously..."</div>
+        <div class="reference-expand-hint">Click to read full reference ↓</div>
+        <div class="reference-full">
+          <p>I am writing to provide my highest recommendation for Dak Brown, who served as our Founding GTM Lead at Fintool from March 2024 to December 2025.</p>
+          <p>Dak built our entire go-to-market function from scratch and scaled us from $0 ARR to $945k ARR in 18 months. He closed marquee logos including PwC, Janus Henderson, HMI Capital, and Artisan Partners — collectively managing over $1 trillion in assets. Beyond the numbers, he architected our sales motion, owned marketing end-to-end, and drove a 30% increase in product adoption through white-glove customer success. His guerrilla marketing campaign at the Berkshire Hathaway annual meeting generated national media coverage from Barron's and became a masterclass in creative, low-budget brand building.</p>
+          <p>What sets Dak apart is his ability to operate at both strategic and tactical levels simultaneously. He negotiated podcast sponsorships, built our CRM infrastructure, hosted product webinars, and served as the critical bridge between customers and our product team. Every week he sent our engineers curated call clips and stacked evidence for features — one of which directly drove that 30% adoption increase in usage. He made it a personal goal to meet every major customer in person and hit that milestone in September, exemplifying his commitment to relationships over transactions.</p>
+          <p>Dak brings infectious energy to early-stage teams. He rang a gong for closed deals, planned team celebrations, and created the kind of culture that makes the grind of startup building sustainable. Any company hiring Dak is getting a rare combination: a revenue leader who thinks like a founder, executes like an operator, and builds like he's invested for the long term.</p>
+        </div>
+      </div>
+
+      <div class="reference-card" onclick="this.classList.toggle('expanded')">
+        <div class="reference-person">
+          <div class="reference-avatar-img">
+            <img src="images/image_10.jpg" alt="Edouard Godfrey" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="reference-avatar-fallback">EG</div>
+          </div>
+          <div>
+            <div class="reference-name">Edouard Godfrey</div>
+            <div class="reference-title">CTO & Co-Founder, Fintool</div>
+          </div>
+        </div>
+        <div class="reference-relationship">CTO / Engineering Partner</div>
+        <div class="reference-preview">"He was, without question, the best non-engineering partner I have collaborated with."</div>
+        <div class="reference-expand-hint">Click to read full reference ↓</div>
+        <div class="reference-full">
+          <p>I am pleased to recommend Dak Brown, who served as our Founding GTM Lead at Fintool from March 2024 to December 2025.</p>
+          <p>As CTO, I worked closely with Dak to bridge the gap between our product and the market. He was, without question, the best non-engineering partner I have collaborated with. Dak didn't just relay customer feedback — he acted as the genuine voice of the customer within our technical organization. He cared deeply about the integrity of the product and, crucially, wasn't afraid to challenge the engineering team when he felt a solution didn't meet the user's needs. That willingness to push back when something wasn't right made a tangible difference in the quality of what we shipped.</p>
+          <p>Dak's approach was rooted in high-fidelity data. Every week, he sent curated call clips highlighting real pain points, filed detailed GitHub issues, and stacked evidence across multiple customers for feature requests. One feature he championed through this rigorous approach led to a 30% increase in product adoption within two months of launch.</p>
+          <p>What impressed me most was Dak's technical curiosity and bias toward building. When he needed better visibility into customer usage, he used Claude Code to build his own dashboard rather than consuming engineering resources. He built an AI sales agent using ElevenLabs to qualify leads, demonstrating both technical aptitude and a deep respect for the engineering team's bandwidth. During product meetings, he consistently sharpened our strategy by asking the right questions.</p>
+          <p>Dak also understood the strategic value of design partners. He didn't just volunteer whoever was available; he curated a group of customers with the right technical sophistication and organizational buy-in to provide meaningful feedback. This thoughtfulness significantly accelerated our development cycles.</p>
+          <p>Any technical team would be fortunate to have Dak as their go-to-market partner. He brings a rare blend of technical fluency, user empathy, and the backbone to advocate for excellence.</p>
+        </div>
+      </div>
+
+      <div class="reference-card" onclick="this.classList.toggle('expanded')">
+        <div class="reference-person">
+          <div class="reference-avatar-img">
+            <img src="images/image_5.jpg" alt="Kenneth Farsalas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="reference-avatar-fallback">KF</div>
+          </div>
+          <div>
+            <div class="reference-name">Kenneth S. Farsalas, CFA</div>
+            <div class="reference-title">Principal & Lead Portfolio Manager</div>
+          </div>
+        </div>
+        <div class="reference-relationship">Client from Fintool</div>
+        <div class="reference-preview">"In my 33 years in the finance industry, Dak is one of the more pleasant and balanced sales professionals I've worked with."</div>
+        <div class="reference-expand-hint">Click to read full reference ↓</div>
+        <div class="reference-full">
+          <p>I am writing to offer my strong support for Dak Brown. I came to know him over the past 18 months as a prospect and then as a client when my firm purchased a finance-based AI solution from his previous company, Fintool.</p>
+          <p>What impressed me most about Dak was his thoughtful and consultative sales approach. He didn't just try to sell us a product; he made sure he first understood our firm, our investment approach and our goals related to using an AI application. He is a personable, intelligent professional who was able to bridge the gap between the technological side and our practical financial requirements. He did a great job listening and then offering solutions to meet our needs.</p>
+          <p>This was a competitive process as we evaluated several AI solutions. Dak was consistently patient and respectful of our evaluation process and was not annoyingly pushy. Post sale, he was consistently responsive and really made us feel like our feedback mattered to Fintool as that firm continues to refine its product offering.</p>
+          <p>In my 33 years in the finance industry, Dak is one of the more pleasant and balanced sales professionals I've worked with. While I was sorry to see him leave Fintool, I believe Dak Brown would be a tremendous asset to any sales organization in the AI industry.</p>
+        </div>
+      </div>
+
+      <div class="reference-card" onclick="this.classList.toggle('expanded')">
+        <div class="reference-person">
+          <div class="reference-avatar-img">
+            <img src="images/image_6.jpg" alt="Mike Hampton" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="reference-avatar-fallback">MH</div>
+          </div>
+          <div>
+            <div class="reference-name">Mike Hampton</div>
+            <div class="reference-title">Director, NexPoint Advisors</div>
+          </div>
+        </div>
+        <div class="reference-relationship">Client from Fintool</div>
+        <div class="reference-preview">"Dak went the extra mile to learn who we are as a fund and ensure that Fintool's product was being properly used and innovating towards our needs."</div>
+        <div class="reference-expand-hint">Click to read full reference ↓</div>
+        <div class="reference-full">
+          <p>Dak was an awesome account manager for us — always extremely responsive and knowledgeable on the Fintool product. Candidly I was shocked to see how responsive he was outside of normal business hours, especially considering his location in California.</p>
+          <p>Dak went the extra mile to learn who we are as a fund and ensure that Fintool's product was being properly used and innovating towards our needs. Dak also did a great job initially finding us as a client — he saw that we looked at the tool, proactively reached out, showed us the value proposition, and ultimately closed.</p>
+          <p>Lastly, it meant a lot to our firm that Dak and team came out to visit us. He made sure any questions we had were answered and went above and beyond showing us better ways to manage workflows around earnings and morning news runs. Dak would be a great fit for any team wherever he lands.</p>
+        </div>
+      </div>
+
+      <div class="reference-card">
+        <div class="reference-person">
+          <div class="reference-avatar-img">
+            <img src="images/image_7.jpg" alt="Peter Durham" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="reference-avatar-fallback">PD</div>
+          </div>
+          <div>
+            <div class="reference-name">Peter Durham</div>
+            <div class="reference-title">Former Direct Manager</div>
+          </div>
+        </div>
+        <div class="reference-relationship">Manager · LinkedIn Recommendation</div>
+        <div class="reference-preview">"Dak is a Sales Professional loaded with integrity and drive. He is a strategic thinker, knows when to ask for help and always punches above."</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr style="border:none; border-top:1px solid var(--border); margin:0;">
+
+
+<!-- ═══════ BRAG BOOK ═══════ -->
+<div class="page" id="brag-book">
+  <div class="container">
+    
+    <div class="section-header">
+      <div class="section-divider"></div>
+      <h2>Highlights</h2>
+      <p>From the Navy to the sales floor — highlights from both chapters.</p>
+    </div>
+
+    
+</div>
+
+<!-- ═══════ BRAG BOOK: NAVY ═══════ -->
+<div class="page" id="brag-navy">
+  <div class="container">
+    
+    <div class="section-header">
+      <div class="section-divider"></div>
+      <h2>⚓ Navy</h2>
+      <p style="white-space:nowrap;">6 years of submarine service — from Naval Nuclear Power School to the USS New Hampshire, "Live Free or Die," SSN 778.</p>
+    </div>
+
+    <!-- Dolphins Insignia -->
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <img src="https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/graphics/2503/35025/1000w_q95.jpg" alt="Enlisted Submarine Warfare Insignia (Dolphins)" style="max-width:420px; width:100%; margin-bottom:0.75rem; background:#fff; padding:1rem; border-radius:8px;">
+      <p style="font-size:0.95rem; color:var(--text-secondary); font-weight:600; margin-bottom:0.5rem;">Enlisted Submarine Breast Insignia — "Dolphins"</p>
+      <p style="font-size:0.85rem; color:var(--text-muted); max-width:520px; margin:0 auto; line-height:1.6;">The qualification process typically takes a full year — mastering every system aboard the submarine, from nuclear propulsion to damage control, firefighting, weapons, and navigation. Dak earned his in three months. Fewer than 5% of the Navy wears this pin. It means your crew trusts you with their lives.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2.5rem;">
+      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);">
+        <img src="images/blue_nose.jpg" alt="Blue Nose Certificate" style="width:100%; height:auto; display:block;">
+        <div style="padding:1.25rem;">
+          <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.35rem;">Order of the Blue Nose</h4>
+          <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">Awarded to sailors who cross the Arctic Circle. A centuries-old naval tradition recognizing those who have ventured into the frozen northern waters. Dak earned his aboard the USS New Hampshire during Operation ICEX, when the boat surfaced at the North Pole.</p>
+        </div>
+      </div>
+      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);">
+        <img src="images/order_rock.jpg" alt="Order of the Rock Certificate" style="width:100%; height:auto; display:block;">
+        <div style="padding:1.25rem;">
+          <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.35rem;">Order of the Rock</h4>
+          <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">Awarded to sailors who pass through the Strait of Gibraltar — the ancient "Pillars of Hercules" — and enter the Mediterranean Sea. A storied naval tradition that dates back centuries, honoring those who have sailed into the cradle of Western civilization.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Honorable Discharge</h3>
+        <div class="company">United States Navy</div>
+        <div class="dates">Aug 2014</div>
+        <p style="margin-bottom:1.25rem;">Honorably discharged after 6 years of distinguished service. Received the following medals and decorations:</p>
+
+        <p style="font-weight:500; margin-bottom:0.5rem;">Medals & Decorations</p>
+        <div class="medal-grid">
+          <div class="medal-item">
+            <div class="medal-icon">🎖️</div>
+            <span>Navy Achievement Medal</span>
+          </div>
+          <div class="medal-item">
+            <div class="medal-icon">🎖️</div>
+            <span>Good Conduct Medal</span>
+          </div>
+          <div class="medal-item">
+            <div class="medal-icon">🎖️</div>
+            <span>Navy Expeditionary Medal</span>
+          </div>
+          <div class="medal-item">
+            <div class="medal-icon">🎖️</div>
+            <span>National Defense Service Medal</span>
+          </div>
+          <div class="medal-item">
+            <div class="medal-icon">🎖️</div>
+            <span>Global War on Terrorism Service Medal</span>
+          </div>
+        </div>
+
+        <p style="font-weight:500; margin-top:1.25rem; margin-bottom:0.5rem;">Ribbons & Badges</p>
+        <div class="medal-grid">
+          <div class="medal-item">
+            <div class="medal-icon">🏅</div>
+            <span>Navy "E" Ribbon <small style="color:var(--text-muted);">(2 awards)</small></span>
+          </div>
+          <div class="medal-item">
+            <div class="medal-icon">🏅</div>
+            <span>Sea Service Deployment Ribbon <small style="color:var(--text-muted);">(2 awards)</small></span>
+          </div>
+          <div class="medal-item">
+            <div class="medal-icon">🏅</div>
+            <span>Navy Arctic Service Ribbon</span>
+          </div>
+          <div class="medal-item">
+            <div class="medal-icon">🏅</div>
+            <span>Navy Pistol Marksmanship Ribbon</span>
+          </div>
+          <div class="medal-item">
+            <div class="medal-icon">🏅</div>
+            <span>Enlisted Submarine Breast Insignia <small style="color:var(--text-muted);">("Dolphins")</small></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <h3>USS New Hampshire (SSN 778)</h3>
+        <div class="company">Virginia-class Fast-Attack Submarine · Groton, CT</div>
+        <div class="dates">2010 — 2014</div>
+        <p style="margin-bottom:0.75rem;">Served aboard the USS New Hampshire for 4 years conducting missions vital to national security. Highlights:</p>
+        <ul class="resume-bullets">
+          <li>Completed <strong>2 full 6-month deployments</strong></li>
+          <li><strong>First Virginia-class submarine to surface at the North Pole</strong> — Operation ICE-X</li>
+          <li>Performed <strong>3 emergency deployments</strong></li>
+          <li>Spent <strong>278 out of 365 days at sea</strong> in 2012</li>
+          <li>Spent <strong>105 consecutive days underwater</strong></li>
+        </ul>
+
+        <p style="margin-top:1.25rem; margin-bottom:0.5rem; font-weight:500;">Qualifications earned:</p>
+        <div class="qual-grid">
+          <span class="qual-badge">Nuclear Reactor Operator</span>
+          <span class="qual-badge">Propulsion Plant Operator</span>
+          <span class="qual-badge">Shutdown Reactor Operator</span>
+          <span class="qual-badge">Electrical Operator</span>
+          <span class="qual-badge">Repair Parts Petty Officer</span>
+          <span class="qual-badge">Workcenter Supervisor</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Naval Nuclear Power Training Command</h3>
+        <div class="company">Goose Creek, SC</div>
+        <div class="dates">Oct 2008 — Oct 2010</div>
+        <p>Graduated with a 3.4 GPA from one of the most rigorous academic programs in the U.S. military. The curriculum was designed by MIT and carries a roughly 50% attrition rate. Completed 600+ hours of coursework in reactor physics, thermodynamics, chemistry, and radiological controls, plus 1,500+ hours of hands-on training on an operational nuclear reactor.</p>
+      </div>
+    </div>
+  </div>
+
+<!-- ═══════ BRAG BOOK: SALES ═══════ -->
+<div class="page" id="brag-sales">
+  <div class="container">
+    
+    <div class="section-header">
+      <div class="section-divider"></div>
+      <h2>💼 GTM Leader</h2>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" style="grid-column: span 2;">
+        <div class="project-info">
+          <h3>Personalized Outbound Messaging</h3>
+          <p>Every cold email was deeply researched and personally crafted. The results speak for themselves — prospects regularly responded just to compliment the outreach, even when they weren't buyers.</p>
+          <span class="project-tag">Outbound</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; padding:0 1.5rem 1.5rem;">
+          <img src="images/outbound_ring.png" alt="Personalized outbound email response" style="width:100%; height:auto; border-radius:8px; border:1px solid var(--border);">
+          <img src="images/outbound_subject.png" alt="Subject line outbound compliment" style="width:100%; height:auto; border-radius:8px; border:1px solid var(--border);">
+        </div>
+      </div>
+      <div class="project-card" style="grid-column: span 2;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:center;">
+          <div class="project-info">
+            <h3>Face of the Business</h3>
+            <p>I represent the company well and have been told I am a great face of the business. Whether it's a demo, a webinar, or a first meeting, prospects and customers consistently walk away with a strong impression of the brand.</p>
+            <span class="project-tag">Sales / Brand</span>
+          </div>
+          <div style="padding:0 1.5rem 1.5rem 0;">
+            <img src="images/face_business.png" alt="Prospect feedback on Dak as face of the product" style="width:100%; height:auto; border-radius:8px; border:1px solid var(--border);">
+          </div>
+        </div>
+      </div>
+      <div class="project-card" style="grid-column: span 2;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:center;">
+          <div style="padding:0 0 1.5rem 1.5rem;">
+            <img src="images/testimonial_negotiate.png" alt="Customer agreeing to video testimonial" style="width:100%; height:auto; border-radius:8px; border:1px solid var(--border);">
+          </div>
+          <div class="project-info">
+            <h3>Customer Testimonials as a Negotiation Tactic</h3>
+            <p>I negotiate customer testimonials into renewal and expansion deals, turning happy customers into marketing assets. Video testimonials and case studies become leverage for both brand credibility and future sales conversations.</p>
+            <span class="project-tag">Customer Success / Negotiation</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb" style="height:auto; padding:0;">
+          <img src="images/image_8.jpg" alt="Guerrilla marketing at Berkshire Hathaway" style="width:100%; height:auto; display:block;">
+        </div>
+        <div class="project-info">
+          <h3>Guerrilla Marketing at Berkshire Hathaway Annual Meeting</h3>
+          <p>Designed and executed a creative, low-budget guerrilla marketing campaign at the Berkshire Hathaway annual shareholder meeting that generated national media coverage from outlets like Barron's. A masterclass in scrappy brand-building for a startup.</p>
+          <a href="https://x.com/hkeskiva/status/1918681575727788172" target="_blank" style="display:inline-flex;align-items:center;gap:0.35rem;color:var(--accent);font-size:0.85rem;font-weight:500;text-decoration:none;margin-top:0.5rem;">View on X →</a>
+          <a href="https://x.com/FromValue/status/1917788036441530459" target="_blank" style="display:inline-flex;align-items:center;gap:0.35rem;color:var(--accent);font-size:0.85rem;font-weight:500;text-decoration:none;margin-top:0.25rem;">View on X →</a>
+          <br><span class="project-tag">Marketing</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="https://elevenlabs.io/app/talk-to?agent_id=agent_3501k896vw2sf5gt3yqkmf8k7zsv" target="_blank" class="project-thumb project-thumb-link" style="height:auto; padding:0; position:relative;">
+          <img src="images/image_11.jpg" alt="AI Voice Agent" style="width:100%; height:auto; display:block;">
+          <div style="position:absolute; bottom:12px; right:12px; background:var(--accent); color:#fff; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.8rem; font-weight:600;">Click to try →</div>
+        </a>
+        <div class="project-info">
+          <h3>AI Voice Bot for Lead Qualification</h3>
+          <p>Built an ElevenLabs voice bot at Fintool to automate inbound lead qualification. Visitors could speak directly with the bot to learn about the product, answer qualifying questions, and get routed to the right rep.</p>
+          <span class="project-tag">AI / Sales Ops</span>
+        </div>
+      </div>
+      <div class="project-card" style="grid-column: span 2;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:center;">
+          <div style="padding:0 0 1.5rem 1.5rem;">
+            <img src="images/dashboard.png" alt="Dak's usage dashboard built with Claude Code" style="width:100%; height:auto; border-radius:8px; border:1px solid var(--border);">
+          </div>
+          <div class="project-info">
+            <h3>Technical Self-Sufficiency</h3>
+            <p>I use coding to unblock myself when necessary rather than consuming engineering resources. I built this website with Claude Code, and I also built a custom usage dashboard to track customer engagement and product adoption without waiting on the engineering team.</p>
+            <span class="project-tag">Engineering / AI Tools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr style="border:none; border-top:1px solid var(--border); margin:0;">
+
+<!-- ═══════ PHOTOS ═══════ -->
+<div class="page" id="about">
+  <div class="container">
+    
+    <div class="section-header">
+      <div class="section-divider"></div>
+      <h2>About Me</h2>
+    </div>
+
+    <div class="about-collage">
+      <div class="about-photo"><img src="images/about_family.jpg" alt="Family"></div>
+      <div class="about-photo"><img src="images/about_taylor.jpg" alt="Taylor and me"></div>
+      <div class="about-photo tall"><img src="images/about_mttam.png" alt="Mt. Tam summit"></div>
+      <div class="about-photo"><img src="images/about_friends.jpg" alt="Birthday with friends"></div>
+      <div class="about-photo"><img src="images/about_cooking.jpg" alt="Home cooking"></div>
+      <div class="about-photo"><img src="images/about_biking.jpg" alt="Cycling in Marin"></div>
+      <div class="about-photo"><img src="images/about_wakeboard.png" alt="Wakeboarding"></div>
+    </div>
+
+    <div style="max-width:680px; color:var(--text-secondary); font-size:1.05rem; line-height:1.8; font-weight:300;">
+      <p style="margin-bottom:1.25rem;">Born and raised in Sacramento, California — and Northern California is where I intend to stay forever. My family is everything to me, and I'm lucky that they're all local. Whether it's family dinners, a holiday gathering, being close to the people I love most is something I never take for granted. That same value shows up in how I work — I build real relationships, not transactional ones.</p>
+      <p style="margin-bottom:1.25rem;">Most of my closest friends are local too, which means there's never a shortage of plans. Outside of family and friends, you'll usually find me on a bicycle. Some may say I have a bike addiction — and they're probably right. I love getting out into the Marin Headlands for a long ride whenever I can.</p>
+      <p style="margin-bottom:1.25rem;">I wouldn't say I am a foodie, but I eat from time to time. I genuinely enjoy cooking and am always experimenting with new cuisines, and I'm constantly hunting for the next great restaurant. Beyond that, I spend a lot of time listening to podcasts and reading books — just staying curious.</p>
+      <p>I try and be the same authentic person at work as well as my personal life. A few qualities I try and embody are grit, integrity, humility, and reliable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <p>© 2026 Dak Brown · <a href="mailto:dakbrwn@gmail.com">dakbrwn@gmail.com</a> · <a href="https://linkedin.com/in/dakbrown" target="_blank">LinkedIn</a></p>
+</footer>
+
+
+</body>
+</html>
